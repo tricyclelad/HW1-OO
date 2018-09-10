@@ -271,7 +271,7 @@ namespace ShapesTests
             Assert.AreEqual(-123.45, p1.X, 0);
             Assert.AreEqual(-23.45, p1.Y, 0);
 
-            Point p2 = p1.Copy();
+            Point p2 = p1.Clone();
             Assert.AreNotSame(p1, p2);
             Assert.AreEqual(p1.X, p2.X, 0);
             Assert.AreEqual(p1.Y, p2.Y, 0);

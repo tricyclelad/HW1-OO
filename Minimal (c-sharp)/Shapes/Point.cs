@@ -54,7 +54,7 @@
          * @return                  A new point with same x and y locations
          * @throws ShapeException   Should never thrown because the current x and y are valid
          */
-        public Point Copy()
+        public Point Clone()
         {
             return new Point(X, Y);
         }
