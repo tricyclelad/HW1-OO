@@ -91,9 +91,17 @@ namespace ShapesTests
 
             var myLine = new Line(1, 2, 4, 10);
             Assert.AreEqual(8.544, myLine.ComputeLength(), 0.001);
+            //Attempt to create a line with 0 length
+            try {
+                myLine = new Line(1, 2, 1, 2);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Cannot create a line of length 0", e.Message);
+            }
 
-            myLine = new Line(1, 2, 1, 2);
-            Assert.AreEqual(Math.Sqrt(0), myLine.ComputeLength(), 0);
+            //Assert.AreEqual(Math.Sqrt(0), myLine.ComputeLength(), 0);
 
             myLine = new Line(3, -2, -4, 10);
             Assert.AreEqual(13.892, myLine.ComputeLength(), 0.001);
@@ -116,8 +124,17 @@ namespace ShapesTests
             myLine = new Line(2, 4, 2, 2);
             Assert.AreEqual(double.NegativeInfinity, myLine.ComputeSlope(), 0.1);
 
-            myLine = new Line(2, 2, 2, 2);
-            Assert.IsTrue(double.IsNaN(myLine.ComputeSlope()));
+            try
+            {
+                myLine = new Line(2, 2, 2, 2);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+
+                Assert.AreEqual("Cannot create a line of length 0", e.Message);
+            }
+//            Assert.IsTrue(double.IsNaN(myLine.ComputeSlope()));
         }
     }
 }

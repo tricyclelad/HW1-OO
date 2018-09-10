@@ -17,6 +17,8 @@ namespace Shapes
          */
         public Line(double x1, double y1, double x2, double y2)
         {
+            if (x1 == x2 && y1 == y2)
+                throw new ShapeException("Cannot create a line of length 0");
             Point1 = new Point(x1, y1);
             Point2 = new Point(x2, y2);
         }
@@ -31,6 +33,7 @@ namespace Shapes
         {
             if (point1==null || point2==null)
                 throw new ShapeException("Invalid point");
+              
 
             Point1 = point1;
             Point2 = point2;
