@@ -19,9 +19,18 @@ namespace ShapesTests
             Assert.AreSame(p1, myLine.Point1);
             Assert.AreSame(p2, myLine.Point2);
 
-            myLine = new Line(p1, p1);
-            Assert.AreSame(p1, myLine.Point1);
-            Assert.AreSame(p1, myLine.Point2);
+            try
+            {
+                myLine = new Line(p1, p1);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Cannot create a line of length 0", e.Message);
+            }
+//            myLine = new Line(p1, p1);
+//            Assert.AreSame(p1, myLine.Point1);
+//            Assert.AreSame(p1, myLine.Point2);
 
             p1 = new Point(1.4,2.5);
             p2 = new Point(4.6, 10.7);
