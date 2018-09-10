@@ -1,0 +1,1 @@
+Realized we could avoid creating shapes of innappropriate length, if we made sure that we couldn't create a line of innappropriate length. 
