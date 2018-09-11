@@ -26,6 +26,7 @@ namespace ShapesTests
             }
             catch (ShapeException e)
             {
+
                 Assert.AreEqual("Cannot create a line of length 0", e.Message);
             }
 //            myLine = new Line(p1, p1);

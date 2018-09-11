@@ -107,14 +107,15 @@ namespace ShapesTests
         {
             Point Point1 = new Point(0,0);
             Point Point2 = new Point(0,0);
-            Point Point3 = new Point(1,2);
-            Point Point4 = new Point(4,3);
+            Point Point3 = new Point(.89,.90);
+            Point Point4 = new Point(.89,.90);
             Point Point5 = new Point(-1,0);
 
             Assert.IsTrue(Validator.ArePointsEqual(Point1,Point2));
             Assert.IsTrue(Validator.ArePointsEqual(Point1,Point1));
             Assert.IsFalse(Validator.ArePointsEqual(Point1,Point3));
             Assert.IsFalse(Validator.ArePointsEqual(Point4,Point5));
+            Assert.IsTrue(Validator.ArePointsEqual(Point3,Point4));
 
         }
         [TestMethod]
@@ -124,7 +125,7 @@ namespace ShapesTests
             Line Line2 = new Line(0,0,10,10);
             Line Line3 = new Line(0,0,12,12);
             Line Line4 = new Line(12,12,10,10);
-            Line Line5 = new Line(1,1,5,5);
+            Line Line5 = new Line(.89,.89,.90,.90);
 
             Assert.IsTrue(Validator.AreLinesEqual(Line1,Line2)); 
             Assert.IsTrue(Validator.AreLinesEqual(Line1,Line1)); 
