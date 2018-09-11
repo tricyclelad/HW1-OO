@@ -14,7 +14,7 @@ namespace ShapesTests
             var p1 = new Point(0, 0);
             var p2 = new Point(1, 1);
             var p3 = new Point(2, 0);
-            var p4 = new Point(3,3);
+            var p4 = new Point(3, 3);
             var myTriangle = new Triangle(0, 0, 1, 1, 2, 0);
 
             Assert.AreEqual(0, myTriangle.Vertex1.X, 0);
@@ -47,7 +47,7 @@ namespace ShapesTests
 
             try
             {
-                myTriangle = new Triangle(0, 0, 1,-1, 3, -3);
+                myTriangle = new Triangle(0, 0, 1, -1, 3, -3);
                 Assert.Fail("Expected exception not thrown");
             }
             catch (ShapeException e)
@@ -85,7 +85,7 @@ namespace ShapesTests
 
             try
             {
-                myTriangle = new Triangle(p1,p2,p4);
+                myTriangle = new Triangle(p1, p2, p4);
                 Assert.Fail("Expected exception not thrown");
             }
             catch (ShapeException e)
@@ -109,5 +109,107 @@ namespace ShapesTests
             Assert.AreEqual(2.1, myTriangle.Vertex3.X, 0);
             Assert.AreEqual(0.1, myTriangle.Vertex3.Y, 0);
         }
+        [TestMethod]
+        public void testMove()
+        {
+            Triangle myTriangle = new Triangle(0,0,5,5,5,0);
+            Assert.AreEqual(0, myTriangle.Vertex1.X, 0);
+            Assert.AreEqual(0, myTriangle.Vertex1.Y, 0);
+            Assert.AreEqual(5, myTriangle.Vertex2.X, 0);
+            Assert.AreEqual(5, myTriangle.Vertex2.Y, 0);
+            Assert.AreEqual(5, myTriangle.Vertex3.X, 0);
+            Assert.AreEqual(0, myTriangle.Vertex3.Y, 0);
+
+            myTriangle.Move(1, 1);
+            Assert.AreEqual(1, myTriangle.Vertex1.X, 0);
+            Assert.AreEqual(1, myTriangle.Vertex1.Y, 0);
+            Assert.AreEqual(6, myTriangle.Vertex2.X, 0);
+            Assert.AreEqual(6, myTriangle.Vertex2.Y, 0);
+            Assert.AreEqual(6, myTriangle.Vertex3.X, 0);
+            Assert.AreEqual(1, myTriangle.Vertex3.Y, 0);
+
+            myTriangle.Move(.123, .123);
+            Assert.AreEqual(1.123, myTriangle.Vertex1.X, 0);
+            Assert.AreEqual(1.123, myTriangle.Vertex1.Y, 0);
+            Assert.AreEqual(6.123, myTriangle.Vertex2.X, 0);
+            Assert.AreEqual(6.123, myTriangle.Vertex2.Y, 0);
+            Assert.AreEqual(6.123, myTriangle.Vertex3.X, 0);
+            Assert.AreEqual(1.123, myTriangle.Vertex3.Y, 0);
+
+            myTriangle.Move(-.123, -.123);
+            Assert.AreEqual(1, myTriangle.Vertex1.X, 0);
+            Assert.AreEqual(1, myTriangle.Vertex1.Y, 0);
+            Assert.AreEqual(6, myTriangle.Vertex2.X, 0);
+            Assert.AreEqual(6, myTriangle.Vertex2.Y, 0);
+            Assert.AreEqual(6, myTriangle.Vertex3.X, 0);
+            Assert.AreEqual(1, myTriangle.Vertex3.Y, 0);
+
+            try
+            {
+                myTriangle.Move(double.PositiveInfinity, 1);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-x value", e.Message);
+            }
+
+            try
+            {
+                myTriangle.Move(double.NegativeInfinity, 1);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-x value", e.Message);
+            }
+
+            try
+            {
+                myTriangle.Move(double.NaN, 1);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-x value", e.Message);
+            }
+
+            try
+            {
+                myTriangle.Move(1, double.PositiveInfinity);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-y value", e.Message);
+            }
+
+            try
+            {
+                myTriangle.Move(1, double.PositiveInfinity);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-y value", e.Message);
+            }
+
+            try
+            {
+                myTriangle.Move(1, double.NaN);
+                Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Invalid delta-y value", e.Message);
+            }
+        }
+        
+        [TestMethod]
+        public void testComputeArea()
+        {
+
+        }
+ 
     }
 }
