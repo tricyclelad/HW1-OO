@@ -27,14 +27,55 @@ namespace Shapes
             }
             Width = new Line(Vertex1, Vertex2);
             Height = new Line(Vertex1, Vertex4);
+
             if(!AreSidesSameLength())
             {
                 throw new ShapeException("Two or more corresponding sides are not equal lengths");
             }
-            if(!AreVerticesSquared())
+
+            if(!AreDiagonalsSameLength())
             {
                 throw new ShapeException("Atleast one vertex is not squared with the other vertices");
             }
+        }
+        public Rectangle(Point _Vertex1, Point _Vertex2, Point _Vertex3, Point _Vertex4,)
+        {
+            Vertex1 = _Vertex1;
+            Vertex2 = _Vertex2;
+            Vertex3 = _Vertex3;
+            Vertex4 = _Vertex4;
+            if(AreVerticesEqual(Vertex1, Vertex2, Vertex3, Vertex4))
+            {
+                throw new ShapeException("Two or more Square Vertices are equal");
+            }
+            Width = new Line(Vertex1, Vertex2);
+            Height = new Line(Vertex1, Vertex4);
+
+            if(!AreSidesSameLength())
+            {
+                throw new ShapeException("Two or more corresponding sides are not equal lengths");
+            }
+
+            if(!AreDiagonalsSameLength())
+            {
+                throw new ShapeException("Atleast one vertex is not squared with the other vertices");
+            }
+        }
+        public void Move(double deltaX, double deltaY)
+        {
+            Vertex1.Move(deltaX, deltaY);
+            Vertex2.Move(deltaX, deltaY);
+            Vertex3.Move(deltaX, deltaY);
+            Vertex4.Move(deltaX, deltaY);
+        }
+
+        public double ComputeArea()
+        {
+            //Compute area using Heron's formula
+
+            double area = Width.ComputeLength() * Height.ComputeLength();
+
+            return area;
         }
         public bool AreVerticesEqual(Point _Vertex1, Point _Vertex2, Point _Vertex3, Point _Vertex4)
         {
@@ -80,11 +121,21 @@ namespace Shapes
                 return true;
             return false;
         }
-        public bool AreVerticesSquared()
+        public bool AreDiagonalsSameLength()
         {
-
+            Line Diagonal1 = new Line(Vertex1, Vertex3);
+            Line Diagonal2 = new Line(Vertex2, Vertex4);
+            if (Validator.AreLineLengthsEqual(Diagonal1, Diagonal2))
+                return true;
             return false;
         }
+
+        //public bool IsRectangle()
+        //{
+        //    if (AreSidesSameLength() && AreDiagonalsSameLength())
+        //        return true;
+        //    return false;
+        //}
 
     }
 }
