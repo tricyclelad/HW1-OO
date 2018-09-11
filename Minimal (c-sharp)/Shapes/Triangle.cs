@@ -31,7 +31,7 @@ namespace Shapes
             Edge2 = new Line(Vertex2, Vertex3); 
             Edge3 = new Line(Vertex3, Vertex1);
 
-            if(AreSlopesEqual())
+            if(AreEdgeSlopesEqual())
             {
                 throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
             }
@@ -49,19 +49,21 @@ namespace Shapes
         }
         public Triangle(Point _Vertex1, Point _Vertex2, Point _Vertex3)
         {
+            
+            Vertex1 = _Vertex1;
+            Vertex2 = _Vertex2;
+            Vertex3 = _Vertex3;
+
             if(AreVerticesEqual(_Vertex1, _Vertex2, _Vertex3))
             {
                 throw new ShapeException("Two or more Triangle Vertices are equal");
             }
-            Vertex1 = _Vertex1;
-            Vertex2 = _Vertex2;
-            Vertex3 = _Vertex3;
 
             Edge1 = new Line(Vertex1, Vertex2); 
             Edge2 = new Line(Vertex2, Vertex3); 
             Edge3 = new Line(Vertex3, Vertex1); 
 
-            if(AreSlopesEqual())
+            if(AreEdgeSlopesEqual())
             {
                 throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
             }
@@ -77,7 +79,7 @@ namespace Shapes
 
         }
 
-        private bool AreSlopesEqual()
+        private bool AreEdgeSlopesEqual()
         {
             if (Edge1.ComputeSlope() == Edge2.ComputeSlope())
                 return true;

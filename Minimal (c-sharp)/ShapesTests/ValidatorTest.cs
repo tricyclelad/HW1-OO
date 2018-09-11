@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Shapes;
 
@@ -134,8 +135,19 @@ namespace ShapesTests
             Assert.IsFalse(Validator.AreLinesEqual(Line1,Line5)); 
             Assert.IsFalse(Validator.AreLinesEqual(Line4,Line3)); 
             Assert.IsTrue(Validator.AreLinesEqual(Line5,Line5)); 
+        }
 
+        [TestMethod]
+        public void TestAreLineSlopesEqual()
+        {
+            Line Line1 = new Line(0,0,1,1);
+            Line Line2 = new Line(0,0,1,1);
+            Line Line3 = new Line(0,0,1,-1);
+            var myvar = Line1.ComputeSlope(); 
+            var myvar2 = Line3.ComputeSlope(); 
 
+            Assert.IsTrue(Validator.AreLineSlopesEqual(Line1,Line2)); 
+            Assert.IsFalse(Validator.AreLineSlopesEqual(Line1,Line3)); 
         }
     }
 }

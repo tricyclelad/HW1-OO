@@ -32,5 +32,16 @@ namespace Shapes
             return false;
 
         }
+        public static bool AreLineSlopesEqual(Line Line1, Line Line2)
+        {
+            if(Line1.ComputeSlope() == Line2.ComputeSlope())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
