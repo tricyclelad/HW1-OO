@@ -108,6 +108,24 @@ namespace Shapes
             return false;
 
         }
+
+        public void Move(double deltaX, double deltaY)
+        {
+            Vertex1.Move(deltaX, deltaY);
+            Vertex2.Move(deltaX, deltaY);
+            Vertex3.Move(deltaX, deltaY);
+        }
+
+        public double ComputeArea()
+        {
+            //Compute area using Heron's formula
+            double semiperimiter = (Edge1.ComputeLength() + Edge2.ComputeLength() + Edge3.ComputeLength()) /2;
+
+            double area = Math.Sqrt(semiperimiter * (semiperimiter - Edge1.ComputeLength()) * (semiperimiter - Edge2.ComputeLength()) * (semiperimiter - Edge3.ComputeLength()));
+
+            return area;
+        }
+
         //private bool AreEdgeLengthsValid()
         //{
         //    if (Edge1.ComputeLength() + Edge2.ComputeLength() < Edge3.ComputeLength())
@@ -124,7 +142,7 @@ namespace Shapes
 
         //    if (Validator.AreLinesEqual(Edge1, Edge2))
         //        return true;
-            
+
         //    if (Validator.AreLinesEqual(Edge2, Edge3))
         //        return true;
 
@@ -133,6 +151,6 @@ namespace Shapes
         //    return false;
         //}
 
-        
+
     }
 }
