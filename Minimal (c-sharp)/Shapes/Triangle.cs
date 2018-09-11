@@ -36,15 +36,15 @@ namespace Shapes
                 throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
             }
 
-            if (AreEdgesEqual())
-            {
-                throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
-            }
+            //if (AreEdgesEqual())
+            //{
+            //    throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
+            //}
 
-            if (!AreEdgeLengthsValid())
-            {
-                throw new ShapeException("Invalid triangle edge lengths");
-            }
+            //if (!AreEdgeLengthsValid())
+            //{
+            //    throw new ShapeException("Invalid triangle edge lengths");
+            //}
 
         }
         public Triangle(Point _Vertex1, Point _Vertex2, Point _Vertex3)
@@ -56,18 +56,24 @@ namespace Shapes
             Vertex1 = _Vertex1;
             Vertex2 = _Vertex2;
             Vertex3 = _Vertex3;
+
             Edge1 = new Line(Vertex1, Vertex2); 
             Edge2 = new Line(Vertex2, Vertex3); 
             Edge3 = new Line(Vertex3, Vertex1); 
-            if (AreEdgesEqual())
+
+            if(AreSlopesEqual())
             {
                 throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
             }
+            //if (AreEdgesEqual())
+            //{
+            //    throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
+            //}
 
-            if (!AreEdgeLengthsValid())
-            {
-                throw new ShapeException("Invalid triangle edge Lengths");
-            }
+            //if (!AreEdgeLengthsValid())
+            //{
+            //    throw new ShapeException("Invalid triangle edge Lengths");
+            //}
 
         }
 
@@ -100,30 +106,30 @@ namespace Shapes
             return false;
 
         }
-        private bool AreEdgeLengthsValid()
-        {
-            if (Edge1.ComputeLength() + Edge2.ComputeLength() < Edge3.ComputeLength())
-                return false;
-            if (Edge1.ComputeLength() + Edge3.ComputeLength() < Edge2.ComputeLength())
-                return false;
-            if (Edge2.ComputeLength() + Edge3.ComputeLength() < Edge1.ComputeLength())
-                return false;
-            return true;
-        }
+        //private bool AreEdgeLengthsValid()
+        //{
+        //    if (Edge1.ComputeLength() + Edge2.ComputeLength() < Edge3.ComputeLength())
+        //        return false;
+        //    if (Edge1.ComputeLength() + Edge3.ComputeLength() < Edge2.ComputeLength())
+        //        return false;
+        //    if (Edge2.ComputeLength() + Edge3.ComputeLength() < Edge1.ComputeLength())
+        //        return false;
+        //    return true;
+        //}
 
-        private bool AreEdgesEqual()
-        {
+        //private bool AreEdgesEqual()
+        //{
 
-            if (Validator.AreLinesEqual(Edge1, Edge2))
-                return true;
+        //    if (Validator.AreLinesEqual(Edge1, Edge2))
+        //        return true;
             
-            if (Validator.AreLinesEqual(Edge2, Edge3))
-                return true;
+        //    if (Validator.AreLinesEqual(Edge2, Edge3))
+        //        return true;
 
-            if (Validator.AreLinesEqual(Edge1, Edge3))
-                return true;
-            return false;
-        }
+        //    if (Validator.AreLinesEqual(Edge1, Edge3))
+        //        return true;
+        //    return false;
+        //}
 
         
     }

@@ -1,1 +1,4 @@
 Realized we could avoid creating shapes of innappropriate length, if we made sure that we couldn't create a line of innappropriate length. 
+When testing for valid triangles, turns out you can either test for lengths of edges, 
+or you can test if the edges have the same slope. If any of the edges on a triangle have the same slope, 
+then they are on the same line and not a triangle! Pretty interesting stuff.

@@ -44,6 +44,14 @@ namespace ShapesTests
                 Assert.AreEqual("Invalid triangle edges: 1 or more lines are in same location", e.Message);
             }
 
+            try
+            {
+                myTriangle = new Triangle(p1, p2, p1);
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Two or more Triangle Vertices are equal", e.Message);
+            }
             
         }
         //    p1 = new Point(1.4, 2.5);
