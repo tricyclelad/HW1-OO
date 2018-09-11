@@ -38,7 +38,7 @@ namespace Shapes
                 throw new ShapeException("Atleast one vertex is not squared with the other vertices");
             }
         }
-        public Rectangle(Point _Vertex1, Point _Vertex2, Point _Vertex3, Point _Vertex4,)
+        public Rectangle(Point _Vertex1, Point _Vertex2, Point _Vertex3, Point _Vertex4)
         {
             Vertex1 = _Vertex1;
             Vertex2 = _Vertex2;

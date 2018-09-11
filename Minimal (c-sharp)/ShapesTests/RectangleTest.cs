@@ -14,6 +14,7 @@ namespace ShapesTests
             var p2 = new Point(0, 1);
             var p3 = new Point(1, 1);
             var p4 = new Point(1, 0);
+            //var myRectangle = new Rectangle(p1,p2,p3,p4);
             var myRectangle = new Rectangle(0, 0, 0, 1, 1, 1, 1, 0);
 
             Assert.AreEqual(0, myRectangle.Vertex1.X, 0);
