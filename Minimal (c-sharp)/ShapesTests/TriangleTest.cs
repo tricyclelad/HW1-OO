@@ -110,7 +110,7 @@ namespace ShapesTests
             Assert.AreEqual(0.1, myTriangle.Vertex3.Y, 0);
         }
         [TestMethod]
-        public void testMove()
+        public void TestMove()
         {
             Triangle myTriangle = new Triangle(0,0,5,5,5,0);
             Assert.AreEqual(0, myTriangle.Vertex1.X, 0);
@@ -206,8 +206,16 @@ namespace ShapesTests
         }
         
         [TestMethod]
-        public void testComputeArea()
+        public void TestComputeArea()
         {
+                Triangle myTriangle = new Triangle(-5,0,0,5,5,0);
+                Assert.AreEqual(25, myTriangle.ComputeArea(), 0.0001);
+
+                myTriangle = new Triangle(0,0,5.5,5.5,5.9,0);
+                Assert.AreEqual(16.225, myTriangle.ComputeArea(), 0.0001);
+
+                myTriangle = new Triangle(-6.239,0,0,12.987,0,0);
+                Assert.AreEqual(40.5129465, myTriangle.ComputeArea(), 0.0001);
 
         }
  
