@@ -23,7 +23,7 @@ namespace Shapes
             Vertex4 = new Point(x4,y4);
             if(AreVerticesEqual(Vertex1, Vertex2, Vertex3, Vertex4))
             {
-                throw new ShapeException("Two or more Square Vertices are equal");
+                throw new ShapeException("Two or more Rectangle Vertices are equal");
             }
             Width = new Line(Vertex1, Vertex2);
             Height = new Line(Vertex1, Vertex4);
@@ -46,7 +46,7 @@ namespace Shapes
             Vertex4 = _Vertex4;
             if(AreVerticesEqual(Vertex1, Vertex2, Vertex3, Vertex4))
             {
-                throw new ShapeException("Two or more Square Vertices are equal");
+                throw new ShapeException("Two or more Rectangle Vertices are equal");
             }
             Width = new Line(Vertex1, Vertex2);
             Height = new Line(Vertex1, Vertex4);

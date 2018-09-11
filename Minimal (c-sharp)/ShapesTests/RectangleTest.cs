@@ -25,38 +25,36 @@ namespace ShapesTests
             Assert.AreEqual(1, myRectangle.Vertex3.Y, 0);
             Assert.AreEqual(1, myRectangle.Vertex4.X, 0);
             Assert.AreEqual(0, myRectangle.Vertex4.Y, 0);
+            try
+            {
+                myRectangle = new Rectangle(0, 0, 1, 1, 0, 0, 1, 1);
+        Assert.Fail("Expected exception not thrown");
+            }
+            catch (ShapeException e)
+            {
+                Assert.AreEqual("Two or more Rectangle Vertices are equal", e.Message);
+            }
         }
         //    try
         //    {
-        //        myTriangle = new Triangle(0, 0, 1, 1, 0, 0);
+        //        myRectangle = new Rectangle(0, 0, 0, 1, 1, 1, 2, 0);
         //        Assert.Fail("Expected exception not thrown");
         //    }
         //    catch (ShapeException e)
         //    {
-
-        //        Assert.AreEqual("Two or more Triangle Vertices are equal", e.Message);
+        //        Assert.AreEqual("Two or more corresponding sides are not equal lengths", e.Message);
         //    }
 
         //    try
         //    {
-        //        myTriangle = new Triangle(0, 0, 1, 1, 3, 3);
+        //        myRectangle = new Rectangle(0, 0, 1, 1, 2, 1, 1, 0);
         //        Assert.Fail("Expected exception not thrown");
         //    }
         //    catch (ShapeException e)
         //    {
-        //        Assert.AreEqual("Invalid triangle edges: 1 or more lines are in same location", e.Message);
+        //        Assert.AreEqual("Atleast one vertex is not squared with the other vertices", e.Message);
         //    }
-
-        //    try
-        //    {
-        //        myTriangle = new Triangle(0, 0, 1, -1, 3, -3);
-        //        Assert.Fail("Expected exception not thrown");
-        //    }
-        //    catch (ShapeException e)
-        //    {
-        //        Assert.AreEqual("Invalid triangle edges: 1 or more lines are in same location", e.Message);
-        //    }
-
+        //}
         //    try
         //    {
         //        myTriangle = new Triangle(p1, p2, p1);
