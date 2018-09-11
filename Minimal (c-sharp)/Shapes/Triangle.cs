@@ -61,33 +61,17 @@ namespace Shapes
         private bool AreEdgesEqual()
         {
 
-            if (AreLinesEqual(Edge1, Edge2))
+            if (Validator.AreLinesEqual(Edge1, Edge2))
                 return true;
             
-            if (AreLinesEqual(Edge2, Edge3))
+            if (Validator.AreLinesEqual(Edge2, Edge3))
                 return true;
 
-            if (AreLinesEqual(Edge1, Edge3))
+            if (Validator.AreLinesEqual(Edge1, Edge3))
                 return true;
             return false;
         }
 
-        private bool AreLinesEqual(Line Line1, Line Line2)
-        {
-            if (ArePointsEqual(Line1.Point1, Line2.Point1) && ArePointsEqual(Line1.Point2, Line2.Point2))
-                return true;
-            return false;
-
-        }
-
-        private bool ArePointsEqual(Point Point1, Point Point2)
-        {
-            if (Point1.X == Point2.X && Point1.Y == Point2.Y)
-            {
-                return true;
-            }
-            return false;
-
-        }
+        
     }
 }
