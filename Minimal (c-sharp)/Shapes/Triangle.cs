@@ -23,7 +23,16 @@ namespace Shapes
             Vertex3 = new Point(x3, y3);
             Edge1 = new Line(Vertex1, Vertex2); 
             Edge2 = new Line(Vertex2, Vertex3); 
-            Edge3 = new Line(Vertex3, Vertex1); 
+            Edge3 = new Line(Vertex3, Vertex1);
+            if (AreEdgesEqual())
+            {
+                throw new ShapeException("Invalid triangle edges: 1 or more lines are in same location");
+            }
+
+            if (!AreEdgeLengthsValid())
+            {
+                throw new ShapeException("Invalid triangle edge Lengths");
+            }
 
         }
         public Triangle(Point _Vertex1, Point _Vertex2, Point _Vertex3)
@@ -35,6 +44,49 @@ namespace Shapes
             Edge2 = new Line(Vertex2, Vertex3); 
             Edge3 = new Line(Vertex3, Vertex1); 
 
+
+        }
+
+        private bool AreEdgeLengthsValid()
+        {
+            if (Edge1.ComputeLength() + Edge2.ComputeLength() < Edge3.ComputeLength())
+                return false;
+            if (Edge1.ComputeLength() + Edge3.ComputeLength() < Edge2.ComputeLength())
+                return false;
+            if (Edge2.ComputeLength() + Edge3.ComputeLength() < Edge1.ComputeLength())
+                return false;
+            return true;
+        }
+
+        private bool AreEdgesEqual()
+        {
+
+            if (AreLinesEqual(Edge1, Edge2))
+                return true;
+            
+            if (AreLinesEqual(Edge2, Edge3))
+                return true;
+
+            if (AreLinesEqual(Edge1, Edge3))
+                return true;
+            return false;
+        }
+
+        private bool AreLinesEqual(Line Line1, Line Line2)
+        {
+            if (ArePointsEqual(Line1.Point1, Line2.Point1) && ArePointsEqual(Line1.Point2, Line2.Point2))
+                return true;
+            return false;
+
+        }
+
+        private bool ArePointsEqual(Point Point1, Point Point2)
+        {
+            if (Point1.X == Point2.X && Point1.Y == Point2.Y)
+            {
+                return true;
+            }
+            return false;
 
         }
     }
