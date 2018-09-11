@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Shapes
 {
-    class Ellipse
+    public class Ellipse
     {
+        public Point Foci1 { get; private set; }
+        public Point Foci2 { get; private set; }
     }
 }

@@ -43,5 +43,11 @@ namespace Shapes
                 return false;
             }
         }
+        public static bool AreLineLengthsEqual(Line Line1, Line Line2)
+        {
+            if (Line1.ComputeLength() == Line2.ComputeLength())
+                return true;
+            return false;
+        }
     }
 }
